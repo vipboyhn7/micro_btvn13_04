@@ -14,7 +14,7 @@ spring:
         format_sql: true
 
 server:
-  port: ${SERVER_PORT:8081}
+  port: ${SERVER_PORT:8080}
 
 jwt:
   secret: ${JWT_SECRET:change-this-development-secret-key-to-a-256-bit-value}
