@@ -46,4 +46,15 @@ public class AuthService {
 
         return jwtUtil.generateToken(user.get());
     }
+
+    public String login(LoginRequest request) {
+        User user = userRepository.findByUsername(request.username())
+                .orElseThrow(InvalidCredentialsException::new);
+
+        if (!passwordEncoder.matches(request.password(), user.getPassword())) {
+            throw new InvalidCredentialsException();
+        }
+
+        return jwtUtil.generateToken(user);
+    }
 }

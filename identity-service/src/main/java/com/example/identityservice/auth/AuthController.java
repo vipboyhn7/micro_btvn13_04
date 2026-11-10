@@ -26,6 +26,11 @@ public class AuthController {
         return authService.register(request);
     }
 
+    @PostMapping("/login")
+    public String login(@Valid @RequestBody LoginRequest request) {
+        return authService.login(request);
+    }
+
     @GetMapping("/test-token")
     public String generateTestToken(@RequestParam String username) {
         return authService.generateTestToken(username);
